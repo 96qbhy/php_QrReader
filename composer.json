@@ -1,0 +1,19 @@
+{
+    "name": "96qbhy/qrcode-scanner",
+    "description": "二维码扫描仪",
+    "authors": [
+        {
+            "name": "96qbhy",
+            "email": "96qbhy@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Qbhy\\QrCodeScanner\\": "src/"
+        },
+        "files": [
+            "src/Support/customFunctions.php"
+        ]
+    }
+}
