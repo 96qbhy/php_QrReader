@@ -14,17 +14,16 @@ final class QrCodeScanner
 
     public $result;
 
-    function __construct($imgsource, $sourcetype = QrCodeScanner::SOURCE_TYPE_FILE, $isUseImagickIfAvailable = true)
+    function __construct($imgSource, $sourceType = QrCodeScanner::SOURCE_TYPE_FILE, $isUseImagickIfAvailable = true)
     {
-
         try {
-            switch ($sourcetype) {
+            switch ($sourceType) {
                 case QrCodeScanner::SOURCE_TYPE_FILE:
                     if ($isUseImagickIfAvailable && extension_loaded('imagick')) {
                         $im = new Imagick();
-                        $im->readImage($imgsource);
+                        $im->readImage($imgSource);
                     } else {
-                        $image = file_get_contents($imgsource);
+                        $image = file_get_contents($imgSource);
                         $im = imagecreatefromstring($image);
                     }
 
@@ -33,15 +32,15 @@ final class QrCodeScanner
                 case QrCodeScanner::SOURCE_TYPE_BLOB:
                     if ($isUseImagickIfAvailable && extension_loaded('imagick')) {
                         $im = new Imagick();
-                        $im->readimageblob($imgsource);
+                        $im->readimageblob($imgSource);
                     } else {
-                        $im = imagecreatefromstring($imgsource);
+                        $im = imagecreatefromstring($imgSource);
                     }
 
                     break;
 
                 case QrCodeScanner::SOURCE_TYPE_RESOURCE:
-                    $im = $imgsource;
+                    $im = $imgSource;
                     if ($isUseImagickIfAvailable && extension_loaded('imagick')) {
                         $isUseImagickIfAvailable = true;
                     } else {

@@ -35,24 +35,25 @@ use Qbhy\QrCodeScanner\Qrcode\Decoder\QRCodeDecoderMetaData;
 use Qbhy\QrCodeScanner\Qrcode\Detector\Detector;
 
 
-
 /**
  * This implementation can detect and decode QR Codes in an image.
  *
  * @author Sean Owen
  */
-class QRCodeReader implements Reader {
+class QRCodeReader implements Reader
+{
 
 
     private static $NO_POINTS = array();
     private $decoder;
 
-    function __construct(){
-        $this->decoder =  new Decoder();
-
+    function __construct()
+    {
+        $this->decoder = new Decoder();
     }
 
-    protected final function  getDecoder() {
+    protected final function getDecoder()
+    {
         return $this->decoder;
     }
 
@@ -68,7 +69,9 @@ class QRCodeReader implements Reader {
 
 
     // @Override
-    public function decode($image, $hints=null){/* Map<DecodeHintType,?> hints*/
+    public function decode($image, $hints = null)
+    {
+        /* Map<DecodeHintType,?> hints*/
         $decoderResult = null;
         $points = array();
         if ($hints != null && $hints['PURE_BARCODE']) {//hints.containsKey(DecodeHintType.PURE_BARCODE)) {
@@ -107,7 +110,8 @@ class QRCodeReader implements Reader {
     }
 
     //@Override
-    public function reset() {
+    public function reset()
+    {
         // do nothing
     }
 
@@ -119,7 +123,8 @@ class QRCodeReader implements Reader {
      *
      * @see com.google.zxing.datamatrix.DataMatrixReader#extractPureBits(BitMatrix)
      */
-    private static function extractPureBits($image) {
+    private static function extractPureBits($image)
+    {
 
         $leftTopBlack = $image->getTopLeftOnBit();
         $rightBottomBlack = $image->getBottomRightOnBit();
@@ -158,14 +163,14 @@ class QRCodeReader implements Reader {
         // Push in the "border" by half the module width so that we start
         // sampling in the middle of the module. Just in case the image is a
         // little off, this will help recover.
-        $nudge = (int) ($moduleSize / 2.0);// $nudge = (int) ($moduleSize / 2.0f);
+        $nudge = (int)($moduleSize / 2.0);// $nudge = (int) ($moduleSize / 2.0f);
         $top += $nudge;
         $left += $nudge;
 
         // But careful that this does not sample off the edge
         // "right" is the farthest-right valid pixel location -- right+1 is not necessarily
         // This is positive by how much the inner x loop below would be too large
-        $nudgedTooFarRight = $left + (int) (($matrixWidth - 1) * $moduleSize) - $right;
+        $nudgedTooFarRight = $left + (int)(($matrixWidth - 1) * $moduleSize) - $right;
         if ($nudgedTooFarRight > 0) {
             if ($nudgedTooFarRight > $nudge) {
                 // Neither way fits; abort
@@ -174,7 +179,7 @@ class QRCodeReader implements Reader {
             $left -= $nudgedTooFarRight;
         }
         // See logic above
-        $nudgedTooFarDown = $top + (int) (($matrixHeight - 1) * $moduleSize) - $bottom;
+        $nudgedTooFarDown = $top + (int)(($matrixHeight - 1) * $moduleSize) - $bottom;
         if ($nudgedTooFarDown > 0) {
             if ($nudgedTooFarDown > $nudge) {
                 // Neither way fits; abort
@@ -186,9 +191,9 @@ class QRCodeReader implements Reader {
         // Now just read off the bits
         $bits = new BitMatrix($matrixWidth, $matrixHeight);
         for ($y = 0; $y < $matrixHeight; $y++) {
-            $iOffset = $top + (int) ($y * $moduleSize);
+            $iOffset = $top + (int)($y * $moduleSize);
             for ($x = 0; $x < $matrixWidth; $x++) {
-                if ($image->get($left + (int) ($x * $moduleSize), $iOffset)) {
+                if ($image->get($left + (int)($x * $moduleSize), $iOffset)) {
                     $bits->set($x, $y);
                 }
             }
@@ -196,7 +201,8 @@ class QRCodeReader implements Reader {
         return $bits;
     }
 
-    private static function moduleSize($leftTopBlack,  $image) {
+    private static function moduleSize($leftTopBlack, $image)
+    {
         $height = $image->getHeight();
         $width = $image->getWidth();
         $x = $leftTopBlack[0];

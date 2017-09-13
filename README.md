@@ -24,7 +24,7 @@ echo $text . PHP_EOL;
 ```
 
 ## 版权声明
-此包并非由我书写，而是 fork 自 [https://github.com/baagee/php_QrReader](https://github.com/baagee/php_QrReader) 后修改而来。由于原版本不支持 `composer`， 故有了此包。
+此包并非完全由我书写，而是 fork 自 [https://github.com/baagee/php_QrReader](https://github.com/baagee/php_QrReader) 后修改而来。由于原版本不支持 `composer`， 故有了此包。
 
 96qbhy@gmail.com  
 [https://github.com/96qbhy/qrcode-scanner](https://github.com/96qbhy/qrcode-scanner)

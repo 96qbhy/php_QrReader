@@ -7,7 +7,9 @@
             "email": "96qbhy@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+
+    },
     "autoload": {
         "psr-4": {
             "Qbhy\\QrCodeScanner\\": "src/"

@@ -1,14 +1,10 @@
 <?php
 
-
 namespace Qbhy\QrCodeScanner;
 
 /**
  * This class is used to help decode images from files which arrive as GD Resource
  * It does not support rotation.
- *
- *
- *
  */
 final class IMagickLuminanceSource extends LuminanceSource
 {
@@ -19,7 +15,6 @@ final class IMagickLuminanceSource extends LuminanceSource
     private $left;
     private $top;
     private $image;
-
 
     public function __construct($image,
                                 $dataWidth,
