@@ -2,6 +2,8 @@
 二维码扫描仪
 
 > 该项目不再维护，转战至 [code-scanner](https://github.com/96qbhy/code-scanner-php) , `code-scanner` 支持二维码和条形码的扫描，欢迎 star。
+> 该项目不再维护，转战至 [code-scanner](https://github.com/96qbhy/code-scanner-php) , `code-scanner` 支持二维码和条形码的扫描，欢迎 star。
+> 该项目不再维护，转战至 [code-scanner](https://github.com/96qbhy/code-scanner-php) , `code-scanner` 支持二维码和条形码的扫描，欢迎 star。
 
 ## 需要
 ```
